@@ -1,5 +1,8 @@
+to run
 
-
+- copy .env.sample to .env
+    - add the mongodb URI
+- yarn && yarn start
 
 
 # Creation
@@ -18,3 +21,5 @@ Start working on the primary server
 - adding a crude test and node-fetch 
 - adding git ignore
 
+Since the app is pretty simple it will just use mongoose to interface with a mongodb
+- yarn add mongoose dotenv

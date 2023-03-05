@@ -1,4 +1,5 @@
 import app from "./app.js";
+// loading environment variables from.env file
 
 const port = process.env.PORT || 3000;
 
