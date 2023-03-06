@@ -13,7 +13,7 @@ mongoose
     console.log("Connected to database");
   })
   .catch((err) => {
-    console.log("Error connecting to database: " + err);
+    console.log(`Error connecting to database: ${err}`);
   });
 
 export default mongoose;

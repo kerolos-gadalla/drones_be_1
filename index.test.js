@@ -8,6 +8,5 @@ describe.skip("fetch", () => {
     fetch("http://localhost:3000/healthcheck2")
       .then(async (res) => console.log("Success", await res.json()))
       .catch(() => console.log("Failure"));
-    done();
   });
 });

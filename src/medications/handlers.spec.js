@@ -1,15 +1,14 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { jest } from "@jest/globals";
 import request from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
 import app from "../../app";
 import MedicationModel from "./model.js";
 import mongoose from "../config/db.js";
-import { MongoMemoryServer } from "mongodb-memory-server";
 
 const mongoServer = await MongoMemoryServer.create();
 
-jest.mock("../config/db.js", async () => {
-  return { default: mongoose };
-});
+jest.mock("../config/db.js", async () => ({ default: mongoose }));
 
 /**
  * Connect to the in-memory database.
@@ -63,6 +62,7 @@ describe("Medication API", () => {
       expect(res.body.code).toBe("NEWMED123");
 
       // Delete the test medication from the database
+      // eslint-disable-next-line no-underscore-dangle
       await MedicationModel.deleteOne({ _id: res.body._id });
     });
 

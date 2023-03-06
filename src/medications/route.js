@@ -1,9 +1,10 @@
 import { Router } from "express";
-import MedicationsHandlers from './handlers.js'
+import MedicationsHandlers from "./handlers";
+
 const router = Router();
 
-router.post('', MedicationsHandlers.registerMedication);
-router.get('', MedicationsHandlers.getAllMedications);
-router.get('/:code', MedicationsHandlers.getMedicationByCode);
+router.post("", MedicationsHandlers.registerMedication);
+router.get("", MedicationsHandlers.getAllMedications);
+router.get("/:code", MedicationsHandlers.getMedicationByCode);
 
 export default router;
