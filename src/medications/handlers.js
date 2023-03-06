@@ -4,7 +4,13 @@ import MedicationModel from "./model.js";
 const MedicationHandlers = {
   registerMedication: async (req, res, next) => {
     try {
-      const medication = await MedicationModel.create(req.body);
+      const { name, weight, code, image } = req.body;
+      const medication = await MedicationModel.create({
+        name,
+        weight,
+        code,
+        image,
+      });
       res.status(201).json(medication);
     } catch (err) {
       respondToError(err, res, next);
@@ -25,6 +31,18 @@ const MedicationHandlers = {
       const medication = await MedicationModel.findOne({
         code: req.params.code,
       });
+      if (!medication) {
+        res.status(404).json({ error: "Medication not found" });
+        return;
+      }
+      res.json(medication);
+    } catch (err) {
+      respondToError(err, res, next);
+    }
+  },
+  getMedicationById: async (req, res, next) => {
+    try {
+      const medication = await MedicationModel.findById(req.params.id);
       if (!medication) {
         res.status(404).json({ error: "Medication not found" });
         return;

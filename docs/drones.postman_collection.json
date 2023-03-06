@@ -1,0 +1,426 @@
+{
+	"info": {
+		"_postman_id": "587fd5c7-c613-4b19-88d0-d7a13573c252",
+		"name": "drones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "medications list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/medications",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"medications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/healthcheck",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "medications add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Med1\",\n    \"weight\": 100,\n    \"code\": \"MED1\",\n    \"image\": \"BASE4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriBase}}/medications",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"medications"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "bad medication response, no yup validations",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Med 1\",\n    \"weight\": 100,\n    \"code\": \"WWWw\",\n    \"image\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uriBase}}/medications",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"medications"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "default-src 'none'"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "704"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Mar 2023 19:13:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <title>Error</title>\n    </head>\n    <body>\n        <pre>ValidationError: Medication validation failed: name: Path `name` is invalid (Med 1)., image: Path `image` is required.\n            <br> &nbsp; &nbsp;at model.Document.invalidate (/Users/kero/Desktop/training/musala/drones_be_1/node_modules/mongoose/lib/document.js:3081:32)\n            <br> &nbsp; &nbsp;at /Users/kero/Desktop/training/musala/drones_be_1/node_modules/mongoose/lib/document.js:2869:17\n            <br> &nbsp; &nbsp;at /Users/kero/Desktop/training/musala/drones_be_1/node_modules/mongoose/lib/schematype.js:1350:9\n            <br> &nbsp; &nbsp;at processTicksAndRejections (node:internal/process/task_queues:78:11)\n        </pre>\n    </body>\n</html>"
+				},
+				{
+					"name": "medications add validation example error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Med 1\",\n    \"weight\": 100,\n    \"code\": \"WWWw\",\n    \"image\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uriBase}}/medications",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"medications"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "78"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4e-oGK9nrVb7XV/FV/m1MAP5Sr0cl4\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Mar 2023 19:25:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Path `name` is invalid (Med 1).\",\n    \"image\": \"Path `image` is required.\"\n}"
+				},
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Med1\",\n    \"weight\": 100,\n    \"code\": \"MED1\",\n    \"image\": \"BASE4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uriBase}}/medications",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"medications"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "99"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"63-AEsk6EMv6srxzoOEj5xqi4VtGko\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Mar 2023 19:27:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Med1\",\n    \"weight\": 100,\n    \"code\": \"MED1\",\n    \"image\": \"BASE4\",\n    \"_id\": \"6404ed2ea44543ded03f7f0f\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "get medication",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uriBase}}/medications/:id",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"medications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "MED1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "99"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"63-TSYJvNXiOia5M73yqb/9aUqF2EI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Mar 2023 19:47:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6404ed2ea44543ded03f7f0f\",\n    \"name\": \"Med1\",\n    \"weight\": 100,\n    \"code\": \"MED1\",\n    \"image\": \"BASE4\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "not found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{uriBase}}/medications/:id",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"medications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "MEe1"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "32"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"20-HxM1/+qHyVWHxLinFcxEXXEQhF0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Mar 2023 19:47:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Medication not found\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "uriBase",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}
