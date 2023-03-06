@@ -23,3 +23,13 @@ Start working on the primary server
 
 Since the app is pretty simple it will just use mongoose to interface with a mongodb
 - yarn add mongoose dotenv
+
+I know there are differnt project structure preferences, It is always hard to choose
+I will go with a DDD like structure (thou I do not think that the current app is complex enough to be disignd this way) 
+I will take a few shortcuts as well.
+
+Trying to find an easier way to handle mongoose errors 
+
+Adding medications API
+some crude tests
+allowing jest to use esm
