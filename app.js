@@ -4,9 +4,18 @@ import mongoose from "./src/config/db.js";
 import medicationsRoute from "./src/medications/index.js";
 import dronesRoute from "./src/drones/index.js";
 import { respondToError } from "./src/utils/validationUtil.js";
+import logger from "./src/utils/logger.js";
 
 const app = express();
 
+function getReqLoggingLiteral(req) {
+  return `Request ${req.method} to ${req.path}`;
+}
+
+app.use((req, _, next) => {
+  logger.info(getReqLoggingLiteral(req));
+  return next();
+});
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,6 +30,11 @@ app.use("/medications", medicationsRoute);
 app.use("/drones", dronesRoute);
 
 // quick error handler for mongoose
+app.use((error, req, res, next) => {
+  logger.error(getReqLoggingLiteral(req), error);
+
+  return next(error);
+});
 app.use((error, req, res, next) => respondToError(error, res, next));
 
 export default app;

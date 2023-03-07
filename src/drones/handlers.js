@@ -1,6 +1,6 @@
 import DroneModel, { DRONE_STATES } from "./model.js";
 import MedicationModel from "../medications/model.js";
-import { respondToError } from "../utils/validationUtil.js";
+import logger from "../utils/logger.js";
 
 const DroneHandlers = {
   listAllDrones: async (req, res, next) => {
@@ -8,7 +8,7 @@ const DroneHandlers = {
       const drone = await DroneModel.find();
       return res.status(200).json(drone);
     } catch (err) {
-      return respondToError(err, res, next);
+      return next(err);
     }
   },
   getDroneByID: async (req, res, next) => {
@@ -16,7 +16,7 @@ const DroneHandlers = {
       const drone = await DroneModel.findById(req.params.id);
       return res.status(200).json(drone);
     } catch (err) {
-      return respondToError(err, res, next);
+      return next(err);
     }
   },
   registerDrone: async (req, res, next) => {
@@ -24,7 +24,8 @@ const DroneHandlers = {
       const drone = await DroneModel.create(req.body);
       return res.status(201).json(drone);
     } catch (err) {
-      return respondToError(err, res, next);
+      logger.error("got an error");
+      return next(err);
     }
   },
 

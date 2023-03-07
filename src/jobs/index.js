@@ -1,13 +1,14 @@
 import CronJob from "node-cron";
+import { durationMin } from "../config/env.js";
+import logger from "../utils/logger.js";
 import logBatteriesToAudit from "./batteryAudit.js";
 
-const durationMin = process.env.CRON_DURATION;
 
 const initScheduledJobs = () => {
   const scheduledJobFunction = CronJob.schedule(
     `*/${durationMin} * * * *`,
     () => {
-      console.log(`every ${durationMin} min`);
+      logger.info(`every ${durationMin} min`);
       logBatteriesToAudit();
     },
   );

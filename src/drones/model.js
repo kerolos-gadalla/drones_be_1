@@ -25,7 +25,7 @@ export const serialNumberSchema = {
 };
 
 const droneSchema = new mongoose.Schema({
-  serialNumber: serialNumberSchema,
+  serialNumber: { ...serialNumberSchema, unique: true },
   model: {
     type: String,
     enum: DRONE_MODELS_ARRAY,

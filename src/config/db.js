@@ -1,19 +1,17 @@
 import mongoose from "mongoose";
-
-const uri = process.env.DB_URI;
-
-console.log(process.env.DB_URI);
+import logger from "../utils/logger.js";
+import { dbUri } from "./env.js";
 
 mongoose
-  .connect(uri, {
+  .connect(dbUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Connected to database");
+    logger.info("Connected to database");
   })
   .catch((err) => {
-    console.log(`Error connecting to database: ${err}`);
+    logger.error(`Error connecting to database: ${err}`);
   });
 
 export default mongoose;
