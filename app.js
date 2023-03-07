@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "./src/config/db.js";
 import medicationsRoute from "./src/medications/index.js";
+import dronesRoute from "./src/drones/index.js";
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.get("/healthcheck2", async (_, res) => {
 });
 
 app.use("/medications", medicationsRoute);
+app.use("/drones", dronesRoute);
 
 export default app;

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import MedicationsHandlers from "./handlers";
+import MedicationsHandlers from "./handlers.js";
 
 const router = Router();
 
