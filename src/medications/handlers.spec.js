@@ -2,7 +2,7 @@
 import { jest } from "@jest/globals";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import app from "../../app";
+import app from "../app";
 import MedicationModel from "./model.js";
 import mongoose from "../config/db.js";
 
