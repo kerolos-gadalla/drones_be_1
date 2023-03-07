@@ -36,7 +36,10 @@ afterAll(async () => {
 describe("Test migrations happened", () => {
   it("should have values", async () => {
     await migrate();
-    expect(await DronesModel.count({})).toBeGreaterThan(9);
+    await migrate();
+    const val = expect(await DronesModel.count({}));
+    val.toBeGreaterThan(9);
+    val.toBeLessThan(20);
   });
 });
 
