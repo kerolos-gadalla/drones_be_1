@@ -1,4 +1,3 @@
-import { respondToError } from "../utils/validationUtil.js";
 import MedicationModel from "./model.js";
 
 const MedicationHandlers = {
@@ -11,18 +10,18 @@ const MedicationHandlers = {
         code,
         image,
       });
-      res.status(201).json(medication);
+      return res.status(201).json(medication);
     } catch (err) {
-      respondToError(err, res, next);
+      return next(err);
     }
   },
 
   getAllMedications: async (req, res, next) => {
     try {
       const medications = await MedicationModel.find();
-      res.json(medications);
+      return res.status(200).json(medications);
     } catch (err) {
-      respondToError(err, res, next);
+      return next(err);
     }
   },
 
@@ -32,24 +31,22 @@ const MedicationHandlers = {
         code: req.params.code,
       });
       if (!medication) {
-        res.status(404).json({ error: "Medication not found" });
-        return;
+        return res.status(404).json({ error: "Medication not found" });
       }
-      res.json(medication);
+      return res.json(medication);
     } catch (err) {
-      respondToError(err, res, next);
+      return next(err);
     }
   },
   getMedicationById: async (req, res, next) => {
     try {
       const medication = await MedicationModel.findById(req.params.id);
       if (!medication) {
-        res.status(404).json({ error: "Medication not found" });
-        return;
+        return res.status(404).json({ error: "Medication not found" });
       }
-      res.json(medication);
+      return res.json(medication);
     } catch (err) {
-      respondToError(err, res, next);
+      return next(err);
     }
   },
 };

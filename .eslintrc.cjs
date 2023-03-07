@@ -12,7 +12,7 @@ module.exports = {
   },
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
-    "object-curly-newline": false,
+    "object-curly-newline": "off",
     "import/extensions": [
       "warn",
       "ignorePackages",

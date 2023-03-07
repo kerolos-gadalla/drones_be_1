@@ -1,28 +1,23 @@
 import mongoose from "../config/db.js";
+import { serialNumberSchema } from "../drones/model.js";
 
-const medicationSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    match: /^[a-zA-Z0-9_-]*$/,
+const auditSchema = new mongoose.Schema(
+  {
+    drone: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Drone",
+    },
+    serialNumber: serialNumberSchema,
+    batteryCapacity: {
+      type: Number,
+      min: 0,
+      max: 100,
+      required: true,
+    },
   },
-  weight: {
-    type: Number,
-    required: true,
-    min: 0,
-  },
-  code: {
-    type: String,
-    required: true,
-    unique: true,
-    match: /^[A-Z0-9_]*$/,
-  },
-  image: {
-    type: String,
-    required: true,
-  },
-});
+  { timestamps: true },
+);
 
-const MedicationModel = mongoose.model("Medication", medicationSchema);
+const AuditModel = mongoose.model("Audit", auditSchema);
 
-export default MedicationModel;
+export default AuditModel;

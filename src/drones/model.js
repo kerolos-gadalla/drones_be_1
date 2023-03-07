@@ -18,12 +18,14 @@ export const DRONE_MODELS = {
 };
 const DRONE_MODELS_ARRAY = Object.values(DRONE_MODELS);
 
+export const serialNumberSchema = {
+  type: String,
+  maxlength: 100,
+  required: true,
+};
+
 const droneSchema = new mongoose.Schema({
-  serialNumber: {
-    type: String,
-    maxlength: 100,
-    required: true,
-  },
+  serialNumber: serialNumberSchema,
   model: {
     type: String,
     enum: DRONE_MODELS_ARRAY,
