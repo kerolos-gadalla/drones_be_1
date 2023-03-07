@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start:0": "node --experimental-vm-modules -r dotenv/config index.js",
-    "start": "babel-node index.js",
-    "start:dev": "nodemon --exec babel-node index.js",
+    "build": "babel src -d dist -s",
+    "start": "yarn build && babel-node dist/index.js",
+    "start:dev": "nodemon --exec babel-node src/index.js",
+    "start:1": "babel-node src/index.js",
+    "test": "yarn build && jest --verbose --silent=false",
+    "test:0": "node --input-type=module --experimental-vm-modules ./node_modules/.bin/jest --verbose --silent=false",
     "crude:test": "bable-node index.test.js",
-    "test": "node --experimental-vm-modules ./node_modules/.bin/jest --verbose --silent=false",
     "t": "jest",
     "lint": "eslint",
     "migrate:o": "migrate",
@@ -30,6 +32,7 @@
     "@babel/core": "^7.21.0",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.21.0",
     "@babel/register": "^7.21.0",
     "babel-jest": "^29.4.3",
     "eslint": "^7.32.0 || ^8.2.0",
@@ -39,6 +42,8 @@
     "migrate-mongoose": "^4.0.0",
     "mongodb-memory-server": "^8.11.5",
     "nodemon": "^2.0.21",
-    "supertest": "^6.3.3"
+    "rimraf": "^4.3.1",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.5"
   }
 }
