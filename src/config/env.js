@@ -1,6 +1,6 @@
 export const dbUri = process.env.DB_URI;
 
-export const durationMin = process.env.CRON_DURATION;
+export const durationMin = Number.parseInt(process.env.CRON_DURATION, 10) || 1;
 
 export const logLevel = process.env.LOG_LEVEL || "info";
 
