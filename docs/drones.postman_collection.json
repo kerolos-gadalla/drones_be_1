@@ -266,7 +266,23 @@
 			"name": "get medication",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/medications/:id",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"medications",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6404ed0147bc1fa643c3328a"
+						}
+					]
+				}
 			},
 			"response": [
 				{
@@ -394,6 +410,289 @@
 					"body": "{\n    \"error\": \"Medication not found\"\n}"
 				}
 			]
+		},
+		{
+			"name": "get all drones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/drones",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"drones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add drone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"Lightweight\",\n    \"serialNumber\": \"SN1\",\n    \"weightLimit\": \"200\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriBase}}/drones",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"drones"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "add drone",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"model\": \"Lightweight\",\n    \"serialNumber\": \"SN1\",\n    \"weightLimit\": \"200\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uriBase}}/drones",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"drones"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "163"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a3-lNPWIUnI9Va0nctdFVK2ZyO5oow\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 00:11:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"serialNumber\": \"SN1\",\n    \"model\": \"Lightweight\",\n    \"weightLimit\": 200,\n    \"batteryCapacity\": 100,\n    \"state\": \"IDLE\",\n    \"loadedMedications\": [],\n    \"_id\": \"640681341d3912c94e11c83d\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Load medications",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    \"MED0001\",\n    \"MED0001\",\n    \"MED0004\",\n    \"MED0001\"\n\n\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{uriBase}}/drones/:id/medications",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"drones",
+						":id",
+						"medications"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6407be23fd0c9030f7c1862f"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Load drone",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"MED0001\",\n    \"MED0001\",\n    \"MED0004\",\n    \"MED0001\"\n\n\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{uriBase}}/drones/:id/medications",
+							"host": [
+								"{{uriBase}}"
+							],
+							"path": [
+								"drones",
+								":id",
+								"medications"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6407be23fd0c9030f7c1862f"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "275"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"113-rxWM1uav5iOzFAJzjrQV+Y1Io1E\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 07 Mar 2023 23:06:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6407be23fd0c9030f7c1862f\",\n    \"serialNumber\": \"SN0004\",\n    \"model\": \"Lightweight\",\n    \"weightLimit\": 100,\n    \"batteryCapacity\": 100,\n    \"state\": \"LOADING\",\n    \"loadedMedications\": [\n        {\n            \"_id\": \"6407c09ddbf7f6c35f181234\",\n            \"name\": \"Med-0001\",\n            \"weight\": 100,\n            \"code\": \"MED0001\",\n            \"image\": \"BASE4\",\n            \"__v\": 0\n        }\n    ],\n    \"__v\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "get loaded medications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/drones/:id/medications",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"drones",
+						":id",
+						"medications"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6407be23fd0c9030f7c1862f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get available drones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/drones/available",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"drones",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get battery level",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{uriBase}}/drones/:id/battery",
+					"host": [
+						"{{uriBase}}"
+					],
+					"path": [
+						"drones",
+						":id",
+						"battery"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6407be23fd0c9030f7c1862f"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

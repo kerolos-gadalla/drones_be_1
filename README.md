@@ -1,8 +1,13 @@
-to run
+## to run
 
+- run `docke-compose-up`
 - copy .env.sample to .env
     - add the mongodb URI
 - yarn && yarn start
+- import postman collection from docs directory and start exploring
+
+
+### do not add/update migration files while the yarn startdev is running
 
 
 # Creation
@@ -37,4 +42,12 @@ allowing jest to use esm
 - since we need some data changes, I will use a tool for migrations `migrate-mongoose`
 - it is giving me some trouble so I am searching for something eles or will implement a manual manager
 - looking at this as well to change how I import files (will see what I can do) https://dev.to/mukul_singhal/write-es6-in-node-using-babel-3m7p
+
+- I am trying to make tha project as complex as I can for the simple requirements to show up my skills 
+
+- I find it a bit inconvenient to complicate it further :-)
+
+- I used bable to tidy things up but it seems to need a bit more work.
+
+- I made some tests to help me develop as it was not mandatory in this task.
 
