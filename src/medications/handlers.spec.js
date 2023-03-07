@@ -1,10 +1,12 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { jest } from "@jest/globals";
+import { jest, expect } from "@jest/globals";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import app from "../app";
 import MedicationModel from "./model.js";
+import DronesModel from "../drones/model.js";
 import mongoose from "../config/db.js";
+import migrate from "../migrations";
 
 jest.mock("../config/db.js", async () => ({
   ...jest.requireActual("../config/db.js"),
@@ -29,6 +31,13 @@ beforeAll(async () => {
 afterAll(async () => {
   await mongoose.disconnect();
   await mongoServer.stop();
+});
+
+describe("Test migrations happened", () => {
+  it("should have values", async () => {
+    await migrate();
+    expect(await DronesModel.count({})).toBeGreaterThan(9);
+  });
 });
 
 describe("Medication API", () => {
@@ -95,7 +104,9 @@ describe("Medication API", () => {
   // Define a test for getting a medication by code
   describe("GET /medications/code/:code", () => {
     it("responds with the medication with the given code", async () => {
-      const res = await request(app).get("/medications/code/TEST123").expect(200);
+      const res = await request(app)
+        .get("/medications/code/TEST123")
+        .expect(200);
 
       expect(res.body).toHaveProperty("_id");
       expect(res.body.name).toBe("Test-Medication");
