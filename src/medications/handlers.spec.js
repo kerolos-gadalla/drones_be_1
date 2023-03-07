@@ -6,14 +6,16 @@ import app from "../../app";
 import MedicationModel from "./model.js";
 import mongoose from "../config/db.js";
 
-const mongoServer = await MongoMemoryServer.create();
-
-jest.mock("../config/db.js", async () => ({ default: mongoose }));
-
+jest.mock("../config/db.js", async () => ({
+  ...jest.requireActual("../config/db.js"),
+  connectDb: () => {},
+}));
+let mongoServer;
 /**
  * Connect to the in-memory database.
  */
 beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
   const uri = await mongoServer.getUri();
   await mongoose.connect(uri, {
     useNewUrlParser: true,
@@ -91,9 +93,9 @@ describe("Medication API", () => {
   });
 
   // Define a test for getting a medication by code
-  describe("GET /medications/:code", () => {
+  describe("GET /medications/code/:code", () => {
     it("responds with the medication with the given code", async () => {
-      const res = await request(app).get("/medications/TEST123").expect(200);
+      const res = await request(app).get("/medications/code/TEST123").expect(200);
 
       expect(res.body).toHaveProperty("_id");
       expect(res.body.name).toBe("Test-Medication");
@@ -102,7 +104,7 @@ describe("Medication API", () => {
 
     it("responds with 404 and an error message when no medication with the given code is found", async () => {
       const res = await request(app)
-        .get("/medications/INVALIDCODE")
+        .get("/medications/code/INVALIDCODE")
         .expect(404);
 
       expect(res.body).toHaveProperty("error");

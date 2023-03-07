@@ -33,3 +33,8 @@ Trying to find an easier way to handle mongoose errors
 Adding medications API
 some crude tests
 allowing jest to use esm
+
+- since we need some data changes, I will use a tool for migrations `migrate-mongoose`
+- it is giving me some trouble so I am searching for something eles or will implement a manual manager
+- looking at this as well to change how I import files (will see what I can do) https://dev.to/mukul_singhal/write-es6-in-node-using-babel-3m7p
+

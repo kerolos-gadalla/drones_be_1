@@ -1,3 +1,7 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
 export const dbUri = process.env.DB_URI;
 
 export const durationMin = Number.parseInt(process.env.CRON_DURATION, 10) || 1;

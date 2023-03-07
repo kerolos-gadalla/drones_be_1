@@ -1,12 +1,11 @@
 import express from "express";
 import cors from "cors";
-import mongoose, { connectDB } from "./src/config/db.js";
+import mongoose from "./src/config/db.js";
 import medicationsRoute from "./src/medications/index.js";
 import dronesRoute from "./src/drones/index.js";
 import { respondToError } from "./src/utils/validationUtil.js";
 import logger from "./src/utils/logger.js";
 
-connectDB();
 const app = express();
 
 function getReqLoggingLiteral(req) {
