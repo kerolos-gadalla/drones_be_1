@@ -1,6 +1,6 @@
-import AuditModel from "../audit/model.js";
-import DroneModel from "../drones/model.js";
-import logger from "../utils/logger.js";
+import AuditModel from "../audit/model";
+import DroneModel from "../drones/model";
+import logger from "../utils/logger";
 
 const logBatteriesToAudit = async () => {
   const drones = await DroneModel.find({}, { _id: 1, batteryCapacity: 1, serialNumber: 1 });

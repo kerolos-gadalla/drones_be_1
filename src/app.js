@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import mongoose from "./config/db.js";
-import medicationsRoute from "./medications/index.js";
-import dronesRoute from "./drones/index.js";
-import { respondToError } from "./utils/validationUtil.js";
-import logger from "./utils/logger.js";
+import mongoose from "./config/db";
+import medicationsRoute from "./medications/index";
+import dronesRoute from "./drones/index";
+import { respondToError } from "./utils/validationUtil";
+import logger from "./utils/logger";
 
 const app = express();
 

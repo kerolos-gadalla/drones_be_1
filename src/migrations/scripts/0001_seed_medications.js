@@ -1,4 +1,4 @@
-import MedicationModel from "../../medications/model.js";
+import MedicationModel from "../../medications/model";
 
 function pad(_n, width, _z) {
   const z = _z || "0";

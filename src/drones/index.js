@@ -1,3 +1,3 @@
-import route from "./route.js";
+import route from "./route";
 
 export default route;

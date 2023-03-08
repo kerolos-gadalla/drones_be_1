@@ -1,8 +1,8 @@
-import app from "./app.js";
-import { connectDB } from "./config/db.js";
-import initScheduledJobs from "./jobs/index.js";
-import migrate from "./migrations/index.js";
-import logger from "./utils/logger.js";
+import app from "./app";
+import { connectDB } from "./config/db";
+import initScheduledJobs from "./jobs/index";
+import migrate from "./migrations/index";
+import logger from "./utils/logger";
 // loading environment variables from.env file
 
 const port = process.env.PORT || 3000;

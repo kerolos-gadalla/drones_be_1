@@ -1,4 +1,4 @@
-import mongoose from "../config/db.js";
+import mongoose from "../config/db";
 
 const migrationSchema = new mongoose.Schema(
   {

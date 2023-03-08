@@ -1,5 +1,5 @@
-import mongoose from "../config/db.js";
-import { serialNumberSchema } from "../drones/model.js";
+import mongoose from "../config/db";
+import { serialNumberSchema } from "../drones/model";
 
 const auditSchema = new mongoose.Schema(
   {
