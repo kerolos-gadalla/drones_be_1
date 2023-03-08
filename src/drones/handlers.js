@@ -78,7 +78,7 @@ const DroneHandlers = {
       }
       const currentWeight = medicationsToLoad.reduce(
         (acc, med) => acc + med.weight,
-        0
+        0,
       );
 
       if (currentWeight > drone.weightLimit) {
@@ -102,7 +102,7 @@ const DroneHandlers = {
     try {
       const droneId = req.params.id;
       const drone = await DroneModel.findById(droneId).populate(
-        "loadedMedications"
+        "loadedMedications",
       );
       return res.json(drone.loadedMedications);
     } catch (err) {
