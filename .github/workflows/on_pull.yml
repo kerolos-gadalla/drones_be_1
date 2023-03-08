@@ -1,7 +1,6 @@
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
 jobs: 
   build-node:
     runs-on: ubuntu-latest
