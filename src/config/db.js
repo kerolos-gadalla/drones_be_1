@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import logger from "../utils/logger.js";
-import { dbUri } from "./env.js";
+import logger from "../utils/logger";
+import { dbUri } from "./env";
 
 export const connectDB = async () => {
   mongoose

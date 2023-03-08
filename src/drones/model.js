@@ -1,4 +1,4 @@
-import mongoose from "../config/db.js";
+import mongoose from "../config/db";
 
 export const DRONE_STATES = {
   IDLE: "IDLE",

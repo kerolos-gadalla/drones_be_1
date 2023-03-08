@@ -1,7 +1,7 @@
 import CronJob from "node-cron";
-import { durationMin } from "../config/env.js";
-import logger from "../utils/logger.js";
-import logBatteriesToAudit from "./batteryAudit.js";
+import { durationMin } from "../config/env";
+import logger from "../utils/logger";
+import logBatteriesToAudit from "./batteryAudit";
 
 
 const initScheduledJobs = () => {

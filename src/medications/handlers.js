@@ -1,4 +1,4 @@
-import MedicationModel from "./model.js";
+import MedicationModel from "./model";
 
 const MedicationHandlers = {
   registerMedication: async (req, res, next) => {

@@ -1,4 +1,4 @@
-import DroneModel, { DRONE_MODELS, DRONE_STATES } from "../../drones/model.js";
+import DroneModel, { DRONE_MODELS, DRONE_STATES } from "../../drones/model";
 
 function pad(_n, width, _z) {
   const z = _z || "0";

@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from "winston";
-import { isDevEnv, logLevel } from "../config/env.js";
+import { isDevEnv, logLevel } from "../config/env";
 
 const logger = createLogger({
   transports: [

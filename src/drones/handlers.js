@@ -1,6 +1,6 @@
-import DroneModel, { DRONE_STATES } from "./model.js";
-import MedicationModel from "../medications/model.js";
-import logger from "../utils/logger.js";
+import DroneModel, { DRONE_STATES } from "./model";
+import MedicationModel from "../medications/model";
+import logger from "../utils/logger";
 
 const DroneHandlers = {
   listAllDrones: async (req, res, next) => {

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import DroneHandlers from "./handlers.js";
+import DroneHandlers from "./handlers";
 
 const router = Router();
 
