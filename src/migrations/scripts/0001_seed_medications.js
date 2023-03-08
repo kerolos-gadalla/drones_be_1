@@ -11,7 +11,7 @@ const generateDummyItems = () =>
     name: `Med-${pad(index, 4, "0")}`,
     weight: 100,
     code: `MED${pad(index, 4, "0")}`,
-    image: "BASE4",
+    image: "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
   }));
 
 export default {
