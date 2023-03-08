@@ -1,15 +1,14 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { jest, expect, beforeAll, afterAll, describe, it } from "@jest/globals";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import app from "../app";
-import MedicationModel from "./model.js";
-import DronesModel from "../drones/model.js";
-import mongoose from "../config/db.js";
+import MedicationModel from "./model";
+import DronesModel from "../drones/model";
+import mongoose from "../config/db";
 import migrate from "../migrations";
 
-jest.mock("../config/db.js", async () => ({
-  ...jest.requireActual("../config/db.js"),
+jest.mock("../config/db", async () => ({
+  ...jest.requireActual("../config/db"),
   connectDb: () => {},
 }));
 let mongoServer;

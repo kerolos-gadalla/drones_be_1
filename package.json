@@ -9,7 +9,6 @@
     "start": "yarn build && babel-node dist/index.js",
     "start:dev": "nodemon --exec babel-node src/index.js",
     "test": "yarn build && jest --verbose --silent=false"
-
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -27,6 +26,7 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
     "@babel/register": "^7.21.0",
+    "@types/jest": "^29.4.0",
     "@types/supertest": "^2.0.12",
     "babel-jest": "^29.4.3",
     "eslint": "^7.32.0 || ^8.2.0",
