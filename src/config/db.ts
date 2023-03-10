@@ -4,10 +4,7 @@ import { dbUri } from "./env";
 
 export const connectDB = async () => {
   mongoose
-    .connect(dbUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    .connect(dbUri)
     .then(() => {
       logger.info("Connected to database");
     })
