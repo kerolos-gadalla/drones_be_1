@@ -5,9 +5,11 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "build": "babel src -d dist -s",
     "start": "yarn build && babel-node dist/index.js",
     "start:dev": "nodemon --exec babel-node src/index.js",
+    "build:code": "babel src -d  dist -s --extensions .ts,.js",
+    "build:types": "tsc",
+    "build": "concurrently yarn:build:*",
     "test": "yarn build && jest --verbose --silent=false"
   },
   "dependencies": {
@@ -31,6 +33,7 @@
     "@types/jest": "^29.4.0",
     "@types/supertest": "^2.0.12",
     "babel-jest": "^29.4.3",
+    "concurrently": "^7.6.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.2",
@@ -40,6 +43,7 @@
     "nodemon": "^2.0.21",
     "rimraf": "^4.3.1",
     "supertest": "^6.3.3",
-    "ts-jest": "^29.0.5"
+    "ts-jest": "^29.0.5",
+    "typescript": "^4.9.5"
   }
 }
